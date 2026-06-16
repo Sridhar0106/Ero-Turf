@@ -120,7 +120,6 @@ export default function BookingPage() {
       // Fallback to gorgeous mock turf so user is never blocked
       setTurfs([MOCK_TURF]);
       setSelectedTurf(MOCK_TURF);
-      toast.success('Running EROTURF in offline/demo mode! 🏏');
       await minDelayPromise;
     } finally {
       setLoadingTurfs(false);
