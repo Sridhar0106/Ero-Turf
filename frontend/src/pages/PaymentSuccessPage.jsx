@@ -295,7 +295,8 @@ export default function PaymentSuccessPage() {
       const canvas = await html2canvas(ticketRef.current, {
         scale: 3,
         useCORS: true,
-        backgroundColor: '#F5F0E8',
+        backgroundColor: null,
+        allowTaint: true,
         logging: false,
       });
       const link = document.createElement('a');
@@ -867,6 +868,7 @@ export default function PaymentSuccessPage() {
 
           {/* ── TICKET ── */}
           <motion.div
+            ref={ticketRef}
             className="psp-ticket-wrap"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -893,7 +895,7 @@ export default function PaymentSuccessPage() {
             </div>
 
             {/* Cream Ticket Body */}
-            <div ref={ticketRef} className="psp-ticket-body">
+            <div className="psp-ticket-body">
 
               {/* Tear line with notches */}
               <div className="psp-tear-line">
