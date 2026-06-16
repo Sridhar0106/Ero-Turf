@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 /* ─────────────────────────────────────────────
    INLINE SVG ICONS
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 const IconCard = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{ width: 20, height: 20 }}>
     <rect x="2" y="5" width="20" height="14" rx="2" />
@@ -76,9 +76,30 @@ const IconStar = () => (
   </svg>
 );
 
+const SvgVisa = ({ style }) => (
+  <svg width="32" height="10" viewBox="0 0 36 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}>
+    <path d="M13.56 11.64H16.4L18.17 2.22H15.33L13.56 11.64ZM23.36 2.37C22.75 2.13 21.84 1.93 20.76 1.93C17.75 1.93 15.63 3.48 15.61 5.7C15.59 7.35 17.13 8.27 18.28 8.81C19.46 9.37 19.86 9.72 19.85 10.22C19.84 10.99 18.9 11.31 18.06 11.31C17.1 11.31 16.31 11.08 15.54 10.74L15.15 12.51C15.65 12.74 16.74 12.94 17.87 12.94C21.03 12.94 23.11 11.42 23.14 9.07C23.16 7.15 21.94 6.32 20.44 5.62C19.46 5.15 19.03 4.8 19.04 4.35C19.04 3.73 19.78 3.51 20.49 3.51C21.37 3.49 22.08 3.69 22.58 3.91L23.36 2.37ZM30.68 2.22H28.49C27.82 2.22 27.28 2.6 27.01 3.23L22.95 12.63H25.93L26.53 11.02H30.18L30.52 12.63H33.15L30.68 2.22ZM27.35 8.86C27.52 8.41 28.18 6.64 28.18 6.64C28.18 6.64 28.52 7.74 28.71 8.86H27.35ZM10.42 2.22L7.69 12.63H4.85L2.24 3.72C2.07 3.12 1.62 2.69 1.05 2.38V2.22H5.66C6.31 2.22 6.89 2.63 7.03 3.27L8.22 9.49L10.42 2.22Z" fill="#1A1F71" />
+  </svg>
+);
+
+const SvgMastercard = ({ style }) => (
+  <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}>
+    <circle cx="7.5" cy="7.5" r="7.5" fill="#EB001B" />
+    <circle cx="16.5" cy="7.5" r="7.5" fill="#F79E1B" fillOpacity="0.8" />
+  </svg>
+);
+
+const SvgRuPay = ({ style }) => (
+  <svg width="36" height="10" viewBox="0 0 36 12" fill="none" xmlns="http://www.w3.org/2000/svg" style={style}>
+    <text x="0" y="10" fill="#0A3A82" fontSize="9" fontWeight="900" fontStyle="italic" fontFamily="sans-serif">Ru</text>
+    <text x="11" y="10" fill="#E86E25" fontSize="9" fontWeight="900" fontStyle="italic" fontFamily="sans-serif">Pay</text>
+    <path d="M28 2 L31 6 L28 10" stroke="#0BA85A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 /* ─────────────────────────────────────────────
    PAYMENT PAGE COMPONENT
-───────────────────────────────────────────── */
+   ───────────────────────────────────────────── */
 export default function PaymentPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -302,80 +323,70 @@ export default function PaymentPage() {
         .pp-root {
           font-family: 'Inter', sans-serif;
           min-height: 100vh;
-          background: #F0F4F8;
+          background: #F8FAFC;
           display: flex;
           flex-direction: column;
+          color: #0F172A;
         }
 
         /* ── HEADER ── */
         .pp-header {
           background: #fff;
-          border-bottom: 1px solid #E5E7EB;
-          padding: 14px 24px;
+          border-bottom: 1px solid #E2E8F0;
+          padding: 16px 40px;
           display: flex;
           align-items: center;
           justify-content: space-between;
           position: sticky;
           top: 0;
           z-index: 50;
-          gap: 16px;
-          flex-wrap: wrap;
         }
 
-        .pp-logo-wrap {
+        .pp-header-left {
           display: flex;
           align-items: center;
-          gap: 16px;
-        }
-
-        .pp-logo {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1px;
+          gap: 20px;
         }
 
         .pp-brand {
-          font-weight: 900;
+          font-size: 22px;
+          font-weight: 800;
           font-style: italic;
-          font-size: 20px;
-          letter-spacing: -0.4px;
-          line-height: 1;
+          letter-spacing: -0.5px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .pp-divider-v {
           width: 1px;
-          height: 18px;
-          background: #E5E7EB;
+          height: 20px;
+          background: #E2E8F0;
         }
 
         .pp-back-btn {
           display: flex;
           align-items: center;
-          gap: 5px;
-          color: #6B7280;
+          gap: 6px;
+          color: #2563EB;
           background: none;
           border: none;
           cursor: pointer;
           font-weight: 600;
-          font-size: 13px;
+          font-size: 14px;
           font-family: inherit;
           padding: 0;
           transition: color 0.15s;
         }
-        .pp-back-btn:hover { color: #111827; }
+        .pp-back-btn:hover {
+          color: #1D4ED8;
+          text-decoration: underline;
+        }
 
-        .pp-secure-badge {
+        .pp-header-right {
           display: flex;
           align-items: center;
-          gap: 6px;
-          font-size: 13px;
-          font-weight: 600;
-          color: #374151;
-          background: #F0FDF4;
-          border: 1px solid #BBF7D0;
-          border-radius: 999px;
-          padding: 6px 14px;
+          gap: 16px;
         }
 
         .pp-timer {
@@ -386,424 +397,628 @@ export default function PaymentPage() {
           font-weight: 700;
           border-radius: 999px;
           padding: 6px 14px;
-          transition: all 0.3s;
         }
         .pp-timer.normal { background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; }
         .pp-timer.urgent { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
 
-        /* ── MAIN GRID ── */
-        .pp-page-title {
+        .pp-secure-badge {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #475569;
+          background: #F8FAFC;
+          border: 1px solid #E2E8F0;
+          border-radius: 999px;
+          padding: 6px 14px;
+        }
+
+        /* ── PAGE TITLE SECTION ── */
+        .pp-title-section {
           max-width: 1200px;
           width: 100%;
           margin: 0 auto;
-          padding: 28px 24px 0;
+          padding: 32px 40px 0;
         }
-        .pp-page-title h1 {
-          font-size: 26px;
-          font-weight: 800;
-          color: #111827;
+        .pp-title-section h1 {
+          font-size: 28px;
+          font-weight: 700;
+          color: #0F172A;
           margin: 0;
         }
-        .pp-page-title p {
+        .pp-title-section p {
           margin: 6px 0 0;
-          font-size: 14px;
-          color: #6B7280;
+          font-size: 15px;
+          color: #64748B;
         }
 
-        .pp-main {
+        /* ── MAIN CONTENT GRID ── */
+        .pp-main-grid {
           flex: 1;
           max-width: 1200px;
           width: 100%;
           margin: 0 auto;
-          padding: 20px 24px 40px;
+          padding: 24px 40px 60px;
           display: grid;
           grid-template-columns: 1fr;
-          gap: 24px;
+          gap: 32px;
           align-items: start;
         }
-        @media (min-width: 900px) {
-          .pp-main {
-            grid-template-columns: 1fr 360px;
+        @media (min-width: 960px) {
+          .pp-main-grid {
+            grid-template-columns: 1fr 380px;
           }
         }
 
         /* ── LEFT COLUMN ── */
-        .pp-left { display: flex; flex-direction: column; gap: 20px; }
-
-        /* ── PAYMENT METHOD SELECTOR ── */
-        .pp-section-card {
-          background: #fff;
-          border: 1px solid #E5E7EB;
-          border-radius: 16px;
-          padding: 24px;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        }
-
-        .pp-section-label {
-          font-size: 11px;
-          font-weight: 800;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: #9CA3AF;
-          margin-bottom: 16px;
-        }
-
-        .pp-method-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
-        }
-        @media (min-width: 600px) {
-          .pp-method-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        .pp-method-btn {
+        .pp-left-col {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
-          padding: 16px 8px;
-          border: 2px solid #E5E7EB;
-          border-radius: 12px;
-          background: #fff;
-          cursor: pointer;
-          transition: all 0.15s;
-          font-family: inherit;
-          text-align: center;
-        }
-        .pp-method-btn:hover:not(.active) {
-          border-color: #D1D5DB;
-          background: #F9FAFB;
-        }
-        .pp-method-btn.active {
-          border-color: #00C853;
-          background: #F0FDF4;
+          gap: 24px;
         }
 
-        .pp-method-icon {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
+        .pp-payment-methods-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        @media (min-width: 768px) {
+          .pp-payment-methods-grid {
+            grid-template-columns: 280px 1fr;
+          }
+        }
+
+        .pp-tabs-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .pp-tab-card {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px;
+          background: #fff;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          cursor: pointer;
+          text-align: left;
+          transition: all 0.15s ease-in-out;
+          font-family: inherit;
+          width: 100%;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .pp-tab-card:hover:not(.active) {
+          border-color: #CBD5E1;
+          background: #F8FAFC;
+        }
+        .pp-tab-card.active {
+          border-color: #2563EB;
+          box-shadow: 0 0 0 1px #2563EB;
+        }
+
+        .pp-tab-card-left {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .pp-tab-card-icon {
+          color: #64748B;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #F3F4F6;
-          color: #6B7280;
-          transition: all 0.15s;
+          width: 24px;
+          height: 24px;
         }
-        .pp-method-btn.active .pp-method-icon {
-          background: #DCFCE7;
-          color: #00C853;
-        }
-        .pp-method-name {
-          font-size: 12px;
-          font-weight: 700;
-          color: #374151;
-          transition: color 0.15s;
-        }
-        .pp-method-btn.active .pp-method-name { color: #16a34a; }
-        .pp-method-sub {
-          font-size: 10px;
-          color: #9CA3AF;
-          font-weight: 500;
+        .pp-tab-card.active .pp-tab-card-icon {
+          color: #2563EB;
         }
 
-        /* ── FORM CARD ── */
-        .pp-form-section-label {
-          font-size: 12px;
+        .pp-tab-card-info {
+          display: flex;
+          flex-direction: column;
+        }
+        .pp-tab-card-title {
+          font-size: 14px;
           font-weight: 700;
-          color: #374151;
-          margin-bottom: 4px;
-          letter-spacing: 0.01em;
+          color: #0F172A;
+        }
+        .pp-tab-card-desc {
+          font-size: 11px;
+          color: #64748B;
+          font-weight: 500;
+          margin-top: 2px;
+        }
+
+        .pp-tab-card-indicator {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          border: 1.5px solid #CBD5E1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.15s;
+          flex-shrink: 0;
+          background: transparent;
+        }
+        .pp-tab-card-indicator.active {
+          border-color: #2563EB;
+          background: #2563EB;
+          color: #fff;
+        }
+
+        .pp-form-card {
+          background: #fff;
+          border: 1px solid #E2E8F0;
+          border-radius: 8px;
+          padding: 24px;
+          box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+          display: flex;
+          flex-direction: column;
+        }
+
+        .pp-form-title {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #64748B;
+          margin-bottom: 20px;
         }
 
         .pp-field {
           display: flex;
           flex-direction: column;
-          gap: 5px;
-          margin-bottom: 14px;
+          gap: 6px;
+          margin-bottom: 16px;
         }
         .pp-field label {
-          font-size: 12px;
+          font-size: 13px;
           font-weight: 600;
-          color: #374151;
+          color: #334155;
         }
+
+        .pp-input-wrap {
+          position: relative;
+        }
+
         .pp-input {
-          border: 1.5px solid #E5E7EB;
-          border-radius: 10px;
-          padding: 11px 14px;
+          width: 100%;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          padding: 12px 14px;
           font-size: 14px;
           font-weight: 500;
-          color: #111827;
-          background: #F9FAFB;
+          color: #0F172A;
+          background: #fff;
           outline: none;
-          transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
-          width: 100%;
+          transition: border-color 0.15s, box-shadow 0.15s;
           font-family: inherit;
         }
-        .pp-input::placeholder { color: #9CA3AF; font-weight: 400; }
+        .pp-input::placeholder {
+          color: #94A3B8;
+          font-weight: 400;
+        }
         .pp-input:focus {
-          border-color: #00C853;
-          background: #fff;
-          box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.12);
+          border-color: #2563EB;
+          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .pp-input-logos {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          pointer-events: none;
         }
 
         .pp-grid-2 {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 14px;
+          gap: 16px;
         }
 
-        .pp-divider { height: 1px; background: #F3F4F6; margin: 14px 0; }
-
-        /* Save card checkbox */
-        .pp-save-card {
+        /* Checkbox */
+        .pp-checkbox-label {
           display: flex;
           align-items: center;
           gap: 10px;
           cursor: pointer;
+          font-size: 13.5px;
+          font-weight: 500;
+          color: #334155;
+          user-select: none;
           margin-top: 4px;
         }
-        .pp-save-card input { width: 16px; height: 16px; accent-color: #00C853; cursor: pointer; }
-        .pp-save-card span { font-size: 13px; font-weight: 500; color: #374151; }
+        .pp-checkbox-label input {
+          width: 16px;
+          height: 16px;
+          accent-color: #2563EB;
+          cursor: pointer;
+        }
 
-        /* UPI app grid */
+        /* Card helper graphic */
+        .pp-card-back-helper {
+          height: 48px;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          background: #F8FAFC;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding-right: 12px;
+          position: relative;
+          overflow: hidden;
+        }
+        .pp-card-back-strip {
+          position: absolute;
+          top: 8px;
+          left: 0;
+          right: 0;
+          height: 10px;
+          background: #475569;
+          opacity: 0.8;
+        }
+        .pp-card-back-signature {
+          position: absolute;
+          top: 22px;
+          left: 8px;
+          right: 48px;
+          height: 12px;
+          background: #E2E8F0;
+        }
+        .pp-cvv-preview {
+          width: 32px;
+          height: 16px;
+          background: #fff;
+          border: 1px solid #DC2626;
+          border-radius: 2px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 9px;
+          font-weight: 700;
+          color: #DC2626;
+          font-family: monospace;
+          z-index: 2;
+        }
+
+        /* UPI apps grid */
         .pp-upi-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
           gap: 10px;
-          margin-bottom: 16px;
+          margin-top: 10px;
+          margin-bottom: 20px;
         }
-        .pp-upi-app {
+        .pp-upi-btn {
           display: flex;
           flex-direction: column;
           align-items: center;
           gap: 6px;
-          padding: 10px 6px;
-          border: 1.5px solid #E5E7EB;
-          border-radius: 10px;
-          background: #F9FAFB;
+          padding: 12px 8px;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          background: #F8FAFC;
           cursor: pointer;
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
-          color: #374151;
+          color: #334155;
           font-family: inherit;
           transition: all 0.15s;
         }
-        .pp-upi-app.selected { border-color: #00C853; background: #F0FDF4; color: #16a34a; }
-        .pp-upi-app:not(.selected):hover { background: #F3F4F6; }
-
-        .pp-upi-info {
-          background: #F0FDF4;
-          border: 1px solid #BBF7D0;
-          border-radius: 10px;
-          padding: 14px 16px;
-          font-size: 13px;
-          color: #16a34a;
-          font-weight: 500;
-          line-height: 1.6;
+        .pp-upi-btn.selected {
+          border-color: #2563EB;
+          background: #EFF6FF;
+          color: #2563EB;
+        }
+        .pp-upi-btn:not(.selected):hover {
+          background: #F1F5F9;
         }
 
-        /* Bank select */
+        .pp-info-alert {
+          background: #EFF6FF;
+          border: 1px solid #BFDBFE;
+          border-radius: 8px;
+          padding: 14px 16px;
+          font-size: 13px;
+          color: #1E40AF;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+
+        /* Net Banking Bank select */
         .pp-select {
-          border: 1.5px solid #E5E7EB;
-          border-radius: 10px;
-          padding: 11px 14px;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          padding: 12px 14px;
           font-size: 14px;
           font-weight: 500;
-          color: #111827;
-          background: #F9FAFB;
+          color: #0F172A;
+          background: #fff;
           outline: none;
           transition: border-color 0.15s;
           width: 100%;
           font-family: inherit;
           cursor: pointer;
-          margin-bottom: 14px;
         }
-        .pp-select:focus { border-color: #00C853; }
+        .pp-select:focus {
+          border-color: #2563EB;
+        }
 
         /* Wallet grid */
         .pp-wallet-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 10px;
+          gap: 12px;
         }
         .pp-wallet-btn {
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 12px 14px;
-          border: 1.5px solid #E5E7EB;
-          border-radius: 10px;
-          background: #F9FAFB;
+          gap: 12px;
+          padding: 14px 16px;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 8px;
+          background: #F8FAFC;
           cursor: pointer;
-          font-size: 13px;
+          font-size: 13.5px;
           font-weight: 600;
-          color: #374151;
+          color: #334155;
           font-family: inherit;
           transition: all 0.15s;
+          text-align: left;
         }
-        .pp-wallet-btn.selected { border-color: #00C853; background: #F0FDF4; color: #16a34a; }
+        .pp-wallet-btn.selected {
+          border-color: #2563EB;
+          background: #EFF6FF;
+          color: #2563EB;
+        }
 
-        /* PAY BUTTON */
+        /* Pay Button Wrapper */
+        .pp-pay-section {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 8px;
+        }
+
         .pp-pay-btn {
           width: 100%;
-          background: linear-gradient(135deg, #00C853, #009624);
+          background: #2563EB;
           color: #fff;
           border: none;
-          border-radius: 12px;
+          border-radius: 8px;
           padding: 16px 24px;
-          font-size: 16px;
-          font-weight: 800;
+          font-size: 16.5px;
+          font-weight: 700;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 10px;
+          gap: 8px;
           transition: all 0.15s;
           font-family: inherit;
-          letter-spacing: 0.02em;
-          box-shadow: 0 4px 16px rgba(0, 200, 83, 0.3);
-          margin-top: 4px;
+          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
         }
         .pp-pay-btn:hover:not(:disabled) {
-          background: linear-gradient(135deg, #00B24A, #007A1E);
-          box-shadow: 0 6px 24px rgba(0, 200, 83, 0.45);
-          transform: translateY(-1px);
+          background: #1D4ED8;
+          box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
         }
-        .pp-pay-btn:active:not(:disabled) { transform: translateY(0); }
-        .pp-pay-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-
-        /* ── RIGHT SUMMARY CARD ── */
-        .pp-summary {
-          background: #fff;
-          border: 1px solid #E5E7EB;
-          border-radius: 16px;
-          overflow: hidden;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-          position: sticky;
-          top: 80px;
+        .pp-pay-btn:active:not(:disabled) {
+          transform: translateY(1px);
+        }
+        .pp-pay-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
 
-        .pp-summary-header {
-          background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
-          padding: 22px 24px;
-          position: relative;
-          overflow: hidden;
-        }
-        .pp-summary-header::before {
-          content: '';
-          position: absolute;
-          top: -30px; right: -30px;
-          width: 100px; height: 100px;
-          background: radial-gradient(circle, rgba(0,200,83,0.2) 0%, transparent 70%);
-          border-radius: 50%;
-        }
-        .pp-summary-header::after {
-          content: '';
-          position: absolute;
-          bottom: -20px; left: 20px;
-          width: 80px; height: 80px;
-          background: radial-gradient(circle, rgba(0,200,83,0.1) 0%, transparent 70%);
-          border-radius: 50%;
-        }
-
-        .pp-summary-turf-name {
-          font-size: 18px;
-          font-weight: 800;
-          color: #fff;
-          margin-bottom: 2px;
-        }
-        .pp-summary-turf-addr {
-          font-size: 12px;
-          color: rgba(255,255,255,0.6);
+        .pp-agree-text {
+          font-size: 12.5px;
+          color: #64748B;
+          text-align: center;
+          font-weight: 500;
+          line-height: 1.5;
           display: flex;
           align-items: center;
-          gap: 4px;
-          margin-bottom: 16px;
+          justify-content: center;
+          gap: 6px;
         }
-        .pp-summary-rating {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          background: rgba(0,200,83,0.2);
-          border: 1px solid rgba(0,200,83,0.3);
-          border-radius: 999px;
-          padding: 3px 10px;
+        .pp-agree-text a {
+          color: #2563EB;
+          text-decoration: none;
+          font-weight: 600;
+        }
+        .pp-agree-text a:hover {
+          text-decoration: underline;
+        }
+
+        /* ── RIGHT COLUMN: ORDER SUMMARY ── */
+        .pp-summary-card {
+          background: #fff;
+          border: 1px solid #E2E8F0;
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .pp-summary-title {
           font-size: 11px;
           font-weight: 700;
-          color: #4ade80;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #64748B;
+          margin-bottom: 20px;
         }
 
-        .pp-summary-body { padding: 20px 24px; }
-
-        .pp-slot-chip {
-          display: inline-flex;
+        /* Turf item details */
+        .pp-turf-item {
+          display: flex;
           align-items: center;
-          font-size: 11px;
+          gap: 16px;
+          margin-bottom: 24px;
+        }
+        .pp-turf-img {
+          width: 64px;
+          height: 64px;
+          border-radius: 8px;
+          object-fit: cover;
+          background: #F1F5F9;
+          flex-shrink: 0;
+        }
+        .pp-turf-info {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+        }
+        .pp-turf-name {
+          font-size: 16px;
           font-weight: 700;
-          color: #16a34a;
-          background: #F0FDF4;
-          border: 1px solid #BBF7D0;
-          border-radius: 6px;
-          padding: 3px 8px;
-          margin: 2px;
+          color: #0F172A;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .pp-turf-sub {
+          font-size: 12.5px;
+          color: #64748B;
+          font-weight: 500;
+          margin-top: 2px;
         }
 
+        .pp-section-divider {
+          height: 1px;
+          background: #E2E8F0;
+          margin: 20px 0;
+        }
+
+        /* Price Details list */
+        .pp-price-details {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
         .pp-price-row {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 13px;
-          color: #6B7280;
+          font-size: 14px;
+          color: #64748B;
           font-weight: 500;
-          margin-bottom: 8px;
+        }
+        .pp-price-row.discount {
+          color: #16A34A;
+        }
+        .pp-price-row.delivery {
+          color: #16A34A;
         }
         .pp-price-total-row {
           display: flex;
           justify-content: space-between;
-          align-items: center;
-          padding-top: 12px;
-          border-top: 2px solid #F3F4F6;
+          align-items: baseline;
           margin-top: 4px;
         }
-
-        .pp-total-label { font-size: 14px; font-weight: 700; color: #111827; }
+        .pp-total-label {
+          font-size: 15px;
+          font-weight: 700;
+          color: #0F172A;
+        }
+        .pp-total-wrap {
+          text-align: right;
+        }
         .pp-total-amount {
-          font-size: 28px;
-          font-weight: 900;
-          color: #00C853;
-          font-family: 'Outfit', 'Inter', sans-serif;
+          font-size: 26px;
+          font-weight: 800;
+          color: #0F172A;
+          letter-spacing: -0.5px;
+        }
+        .pp-total-subtext {
+          font-size: 11.5px;
+          color: #94A3B8;
+          font-weight: 500;
+          margin-top: 1px;
         }
 
-        .pp-trust-row {
+        /* Trust Badges below summary card */
+        .pp-trust-badges {
           display: flex;
+          justify-content: space-between;
           align-items: center;
           gap: 8px;
+          margin-top: 24px;
+        }
+        .pp-trust-badge {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .pp-trust-badge-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #64748B;
+        }
+        .pp-trust-badge-text {
           font-size: 11px;
-          color: #9CA3AF;
           font-weight: 600;
-          padding: 16px 24px;
-          border-top: 1px solid #F3F4F6;
-          background: #FAFAFA;
+          color: #64748B;
+          line-height: 1.2;
         }
 
-        .pp-brands {
+        /* ── FOOTER: ACCEPT BRANDS STRIP ── */
+        .pp-footer {
+          border-top: 1px solid #E2E8F0;
+          background: #fff;
+          padding: 30px 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          margin-top: auto;
+        }
+        .pp-footer-title {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #94A3B8;
+        }
+        .pp-brand-list {
           display: flex;
           flex-wrap: wrap;
-          gap: 6px;
-          padding: 0 24px 16px;
-          border-bottom: 1px solid #F3F4F6;
+          justify-content: center;
+          align-items: center;
+          gap: 16px 24px;
         }
-        .pp-brand-pill {
-          padding: 3px 8px;
-          border: 1px solid #E5E7EB;
-          border-radius: 5px;
-          font-size: 10px;
-          font-weight: 700;
-          color: #6B7280;
-          background: #fff;
+        .pp-brand-logo {
+          font-size: 12.5px;
+          font-weight: 800;
+          font-style: italic;
+          color: #94A3B8;
+          letter-spacing: -0.3px;
+        }
+        .pp-brand-logo.visa { color: #1A1F71; font-size: 16px; }
+        .pp-brand-logo.mastercard { color: #374151; font-size: 15px; font-weight: 900; }
+        .pp-brand-logo.rupay { color: #005A9C; font-size: 13.5px; }
+        .pp-brand-logo.upi { color: #097939; font-size: 13.5px; }
+        .pp-brand-logo.paytm { color: #00BAF2; font-size: 14px; }
+        .pp-brand-logo.gpay { color: #4285F4; font-size: 13.5px; }
+        .pp-brand-logo.phonepe { color: #5F259F; font-size: 13.5px; }
+
+        @media (max-width: 640px) {
+          .pp-header { padding: 14px 20px; }
+          .pp-title-section { padding: 24px 20px 0; }
+          .pp-main-grid { padding: 16px 20px 40px; gap: 24px; }
+          .pp-payment-methods-grid { grid-template-columns: 1fr; gap: 16px; }
+          .pp-form-card { padding: 20px; }
+          .pp-upi-grid { grid-template-columns: repeat(2, 1fr); }
+          .pp-footer { padding: 20px; }
         }
 
         /* Loading overlay */
@@ -822,71 +1037,11 @@ export default function PaymentPage() {
         .pp-spinner {
           width: 48px; height: 48px;
           border: 4px solid #E5E7EB;
-          border-top-color: #00C853;
+          border-top-color: #2563EB;
           border-radius: 50%;
           animation: spin 0.8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Card visual */
-        .pp-card-visual {
-          background: linear-gradient(135deg, #1e3a5f 0%, #0f2747 100%);
-          border-radius: 12px;
-          padding: 18px;
-          margin-bottom: 16px;
-          position: relative;
-          overflow: hidden;
-          min-height: 120px;
-        }
-        .pp-card-visual::before {
-          content: '';
-          position: absolute;
-          top: -20px; right: -20px;
-          width: 100px; height: 100px;
-          background: rgba(255,255,255,0.05);
-          border-radius: 50%;
-        }
-        .pp-card-chip {
-          width: 36px; height: 28px;
-          background: linear-gradient(135deg, #f0c040, #c8960c);
-          border-radius: 5px;
-          margin-bottom: 12px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-template-rows: 1fr 1fr;
-          gap: 2px;
-          padding: 3px;
-        }
-        .pp-card-chip span {
-          background: rgba(0,0,0,0.2);
-          border-radius: 1px;
-        }
-        .pp-card-number-display {
-          font-family: 'Courier New', monospace;
-          font-size: 16px;
-          font-weight: 700;
-          color: rgba(255,255,255,0.9);
-          letter-spacing: 2px;
-          margin-bottom: 10px;
-        }
-        .pp-card-meta {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-        }
-        .pp-card-meta-label { font-size: 9px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.05em; }
-        .pp-card-meta-value { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); }
-
-        @media (max-width: 600px) {
-          .pp-header { padding: 12px 16px; }
-          .pp-page-title { padding: 20px 16px 0; }
-          .pp-main { padding: 16px 16px 32px; }
-          .pp-section-card { padding: 18px; }
-          .pp-summary-body { padding: 16px; }
-          .pp-summary-header { padding: 18px; }
-          .pp-grid-2 { grid-template-columns: 1fr; }
-          .pp-upi-grid { grid-template-columns: repeat(2, 1fr); }
-        }
       `}</style>
 
       {/* LOADING OVERLAY */}
@@ -911,18 +1066,17 @@ export default function PaymentPage() {
       </AnimatePresence>
 
       <div className="pp-root">
-
         {/* ── HEADER ── */}
         <header className="pp-header">
-          <div className="pp-logo-wrap">
-            {/* EroTurf Logo */}
-            <div className="pp-logo">
+          <div className="pp-header-left">
+            {/* Logo */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <svg width="42" height="15" viewBox="0 0 100 35" fill="none">
                 <path d="M22 18 L22 13 M42 12 L42 7 M58 12 L58 7 M78 18 L78 13" stroke="#00C853" strokeWidth="2.5" strokeLinecap="round" />
                 <path d="M10 28 C 30 11, 70 11, 90 28" stroke="#00C853" strokeWidth="3.5" strokeLinecap="round" />
                 <path d="M18 22 C 34 6, 66 6, 82 22" stroke="#00C853" strokeWidth="3.5" strokeLinecap="round" />
               </svg>
-              <span className="pp-brand">
+              <span className="pp-brand" style={{ fontFamily: 'var(--font-brand)', fontWeight: 900 }}>
                 <span style={{ color: '#0F172A' }}>Ero</span><span style={{ color: '#00C853' }}>Turf</span>
               </span>
             </div>
@@ -935,7 +1089,7 @@ export default function PaymentPage() {
             </button>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div className="pp-header-right">
             {/* Countdown */}
             <div className={`pp-timer ${isUrgent ? 'urgent' : 'normal'}`}>
               <IconClock />
@@ -945,460 +1099,456 @@ export default function PaymentPage() {
             {/* Secure badge */}
             <div className="pp-secure-badge">
               <IconLock />
-              100% Secure
+              100% Secure Checkout
             </div>
           </div>
         </header>
 
-        {/* ── PAGE TITLE ── */}
-        <div className="pp-page-title">
-          <h1>Complete Your Payment</h1>
-          <p>Choose a payment method and confirm your turf booking</p>
+        {/* ── PAGE TITLE SECTION ── */}
+        <div className="pp-title-section">
+          <h1>Payment</h1>
+          <p>Choose a payment method and complete your purchase</p>
         </div>
 
-        {/* ── MAIN CONTENT ── */}
-        <main className="pp-main">
+        {/* ── MAIN CONTENT GRID ── */}
+        <main className="pp-main-grid">
 
           {/* ── LEFT COLUMN ── */}
-          <div className="pp-left">
-
-            {/* STEP 1: Choose Method */}
-            <div className="pp-section-card">
-              <div className="pp-section-label">Step 1 — Select Payment Method</div>
-              <div className="pp-method-grid">
-                {paymentMethods.map(m => (
-                  <button
-                    key={m.id}
-                    className={`pp-method-btn ${activeTab === m.id ? 'active' : ''}`}
-                    onClick={() => setActiveTab(m.id)}
-                    type="button"
-                  >
-                    <div className="pp-method-icon">{m.icon}</div>
-                    <div className="pp-method-name">{m.label}</div>
-                    <div className="pp-method-sub">{m.sub}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* STEP 2: Enter Details */}
-            <div className="pp-section-card">
-              <div className="pp-section-label">Step 2 — Enter Payment Details</div>
-
-              {/* Mobile Number */}
-              <div className="pp-field">
-                <label>📱 Mobile Number (for ticket)</label>
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                  placeholder="Enter 10-digit mobile number"
-                  className="pp-input"
-                />
-              </div>
-              <div className="pp-divider" />
-
-              <AnimatePresence mode="wait">
-
-                {/* ── CARD FORM ── */}
-                {activeTab === 'card' && (
-                  <motion.div
-                    key="card"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {/* Card Visual Preview */}
-                    <div className="pp-card-visual">
-                      <div className="pp-card-chip">
-                        <span /><span /><span /><span />
-                      </div>
-                      <div className="pp-card-number-display">
-                        {cardNumber
-                          ? cardNumber.padEnd(19, ' ').replace(/(.{5})/g, '$1').trim()
-                          : '•••• •••• •••• ••••'}
-                      </div>
-                      <div className="pp-card-meta">
-                        <div>
-                          <div className="pp-card-meta-label">Card Holder</div>
-                          <div className="pp-card-meta-value">{cardName || 'YOUR NAME'}</div>
+          <div className="pp-left-col">
+            <div className="pp-card-label">SELECT PAYMENT METHOD</div>
+            
+            {/* Side-by-side Layout: Individual Tab Cards + Form Card */}
+            <div className="pp-payment-methods-grid">
+              
+              {/* Vertical Tabs Stack */}
+              <div className="pp-tabs-stack">
+                {paymentMethods.map(m => {
+                  const isActive = activeTab === m.id;
+                  return (
+                    <button
+                      key={m.id}
+                      className={`pp-tab-card ${isActive ? 'active' : ''}`}
+                      onClick={() => setActiveTab(m.id)}
+                      type="button"
+                    >
+                      <div className="pp-tab-card-left">
+                        <div className="pp-tab-card-icon">{m.icon}</div>
+                        <div className="pp-tab-card-info">
+                          <span className="pp-tab-card-title">{m.label}</span>
+                          <span className="pp-tab-card-desc">{m.sub}</span>
                         </div>
-                        <div>
-                          <div className="pp-card-meta-label">Expires</div>
-                          <div className="pp-card-meta-value">{cardExpiry || 'MM / YY'}</div>
+                      </div>
+                      <div className={`pp-tab-card-indicator ${isActive ? 'active' : ''}`}>
+                        {isActive && <IconCheck />}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Form Details Card */}
+              <div className="pp-form-card">
+                <AnimatePresence mode="wait">
+                  
+                  {/* CREDIT / DEBIT CARD FORM */}
+                  {activeTab === 'card' && (
+                    <motion.div
+                      key="card"
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <div className="pp-form-title">Enter Card Details</div>
+                      
+                      {/* Mobile Number */}
+                      <div className="pp-field">
+                        <label>Mobile Number (for ticket)</label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                          placeholder="Enter 10-digit mobile number"
+                          className="pp-input"
+                        />
+                      </div>
+
+                      {/* Card Number */}
+                      <div className="pp-field">
+                        <label>Card Number</label>
+                        <div className="pp-input-wrap">
+                          <input
+                            type="text"
+                            value={cardNumber}
+                            onChange={handleCardNumberChange}
+                            placeholder="1234 5678 9012 3456"
+                            className="pp-input"
+                            style={{ paddingRight: 110 }}
+                          />
+                          <div className="pp-input-logos">
+                            <SvgVisa style={{ opacity: (!cardBrand || cardBrand === 'visa') ? 1 : 0.2 }} />
+                            <SvgMastercard style={{ opacity: (!cardBrand || cardBrand === 'mastercard') ? 1 : 0.2 }} />
+                            <SvgRuPay style={{ opacity: (!cardBrand || cardBrand === 'rupay') ? 1 : 0.2 }} />
+                          </div>
                         </div>
-                        {/* Brand indicator */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                          {cardBrand === 'visa' && (
-                            <span style={{ fontWeight: 900, fontStyle: 'italic', fontSize: 16, color: '#fff', letterSpacing: '-0.5px' }}>VISA</span>
-                          )}
-                          {cardBrand === 'mastercard' && (
-                            <div style={{ position: 'relative', width: 30, height: 20 }}>
-                              <div style={{ position: 'absolute', left: 0, top: 0, width: 20, height: 20, borderRadius: '50%', background: '#EB001B', opacity: 0.9 }} />
-                              <div style={{ position: 'absolute', right: 0, top: 0, width: 20, height: 20, borderRadius: '50%', background: '#F79E1B', opacity: 0.9 }} />
+                      </div>
+
+                      {/* Name and Expiry */}
+                      <div className="pp-grid-2">
+                        <div className="pp-field">
+                          <label>Cardholder Name</label>
+                          <input
+                            type="text"
+                            value={cardName}
+                            onChange={e => setCardName(e.target.value)}
+                            placeholder="Enter cardholder name"
+                            className="pp-input"
+                          />
+                        </div>
+                        <div className="pp-field">
+                          <label>Expiry Date</label>
+                          <input
+                            type="text"
+                            value={cardExpiry}
+                            onChange={handleExpiryChange}
+                            placeholder="MM / YY"
+                            className="pp-input"
+                            maxLength={7}
+                            style={{ textAlign: 'center' }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* CVV */}
+                      <div className="pp-grid-2">
+                        <div className="pp-field">
+                          <label style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                            CVV
+                            <span title="3-digit CVV code on the back of your card" style={{ color: '#94A3B8', cursor: 'help', display: 'flex' }}><IconInfo /></span>
+                          </label>
+                          <input
+                            type="password"
+                            value={cardCvv}
+                            onChange={handleCvvChange}
+                            placeholder="123"
+                            className="pp-input"
+                            maxLength={4}
+                            style={{ textAlign: 'center', letterSpacing: '2px' }}
+                          />
+                        </div>
+                        <div className="pp-field">
+                          <label style={{ visibility: 'hidden' }}>_</label>
+                          <div className="pp-card-back-helper">
+                            <div className="pp-card-back-strip" />
+                            <div className="pp-card-back-signature" />
+                            <div className="pp-cvv-preview">
+                              {cardCvv ? cardCvv.replace(/./g, '•') : '123'}
                             </div>
-                          )}
-                          {cardBrand === 'rupay' && (
-                            <span style={{ fontWeight: 900, fontStyle: 'italic', fontSize: 12, color: '#fff' }}>RuPay</span>
-                          )}
-                          {!cardBrand && (
-                            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>Card</span>
-                          )}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Card Number */}
-                    <div className="pp-field">
-                      <label>Card Number</label>
-                      <div style={{ position: 'relative' }}>
+                      {/* Save Card */}
+                      <div style={{ marginTop: 8 }}>
+                        <label className="pp-checkbox-label">
+                          <input type="checkbox" checked={saveCard} onChange={e => setSaveCard(e.target.checked)} />
+                          <span>Save card for future payments</span>
+                        </label>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* UPI FORM */}
+                  {activeTab === 'upi' && (
+                    <motion.div
+                      key="upi"
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <div className="pp-form-title">Pay using UPI</div>
+                      
+                      <div className="pp-field">
+                        <label>Mobile Number (for ticket)</label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                          placeholder="Enter 10-digit mobile number"
+                          className="pp-input"
+                        />
+                      </div>
+
+                      <div className="pp-field">
+                        <label>Enter UPI ID / VPA</label>
                         <input
                           type="text"
-                          value={cardNumber}
-                          onChange={handleCardNumberChange}
-                          placeholder="1234 5678 9012 3456"
+                          value={upiId}
+                          onChange={e => setUpiId(e.target.value)}
+                          placeholder="username@bank"
                           className="pp-input"
-                          style={{ paddingRight: 80 }}
                         />
-                        <div style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', display: 'flex', gap: 4, alignItems: 'center' }}>
-                          <span style={{ fontSize: 10, fontWeight: 900, fontStyle: 'italic', color: cardBrand === 'visa' ? '#1a1f71' : '#D1D5DB' }}>VISA</span>
-                          <div style={{ position: 'relative', width: 18, height: 12 }}>
-                            <div style={{ position: 'absolute', left: 0, top: 0, width: 12, height: 12, borderRadius: '50%', background: cardBrand === 'mastercard' ? '#EB001B' : '#D1D5DB' }} />
-                            <div style={{ position: 'absolute', right: 0, top: 0, width: 12, height: 12, borderRadius: '50%', background: cardBrand === 'mastercard' ? '#F79E1B' : '#D1D5DB', opacity: 0.85 }} />
-                          </div>
+                      </div>
+
+                      <div className="pp-field">
+                        <label>Popular UPI Apps</label>
+                        <div className="pp-upi-grid">
+                          {upiApps.map(app => (
+                            <button
+                              key={app.id}
+                              type="button"
+                              className={`pp-upi-btn ${selectedUpiApp === app.id ? 'selected' : ''}`}
+                              onClick={() => setSelectedUpiApp(app.id)}
+                            >
+                              <div style={{
+                                width: 28, height: 28, borderRadius: 6,
+                                background: app.color + '15', color: app.color,
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                fontWeight: 900, fontSize: 10,
+                              }}>
+                                {app.initials}
+                              </div>
+                              {app.name}
+                            </button>
+                          ))}
                         </div>
                       </div>
-                    </div>
 
-                    {/* Name + Expiry */}
-                    <div className="pp-grid-2">
-                      <div className="pp-field" style={{ marginBottom: 0 }}>
-                        <label>Cardholder Name</label>
-                        <input type="text" value={cardName} onChange={e => setCardName(e.target.value)} placeholder="Full name on card" className="pp-input" />
+                      <div className="pp-info-alert">
+                        A payment request will be sent to your UPI app. Open the app and approve the request to finalize booking.
                       </div>
-                      <div className="pp-field" style={{ marginBottom: 0 }}>
-                        <label>Expiry Date</label>
-                        <input type="text" value={cardExpiry} onChange={handleExpiryChange} placeholder="MM / YY" className="pp-input" maxLength={7} style={{ textAlign: 'center' }} />
+                    </motion.div>
+                  )}
+
+                  {/* NET BANKING FORM */}
+                  {activeTab === 'netbanking' && (
+                    <motion.div
+                      key="netbanking"
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <div className="pp-form-title">Pay via Net Banking</div>
+
+                      <div className="pp-field">
+                        <label>Mobile Number (for ticket)</label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                          placeholder="Enter 10-digit mobile number"
+                          className="pp-input"
+                        />
                       </div>
-                    </div>
 
-                    {/* CVV */}
-                    <div className="pp-grid-2" style={{ marginTop: 14 }}>
-                      <div className="pp-field" style={{ marginBottom: 0 }}>
-                        <label style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                          CVV
-                          <span title="3-digit code on back of card" style={{ color: '#9CA3AF', cursor: 'help', display: 'flex' }}><IconInfo /></span>
-                        </label>
-                        <input type="password" value={cardCvv} onChange={handleCvvChange} placeholder="•••" className="pp-input" maxLength={4} style={{ textAlign: 'center', letterSpacing: '4px' }} />
+                      <div className="pp-field">
+                        <label>Select Bank</label>
+                        <select
+                          className="pp-select"
+                          value={selectedBank}
+                          onChange={e => setSelectedBank(e.target.value)}
+                        >
+                          {banks.map(b => (
+                            <option key={b.id} value={b.id}>{b.name}</option>
+                          ))}
+                        </select>
                       </div>
-                      <div className="pp-field" style={{ marginBottom: 0 }}>
-                        <label style={{ visibility: 'hidden' }}>_</label>
-                        <div style={{
-                          height: 44, border: '1.5px solid #E5E7EB', borderRadius: 10,
-                          background: '#F9FAFB', display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
-                          paddingRight: 12, position: 'relative', overflow: 'hidden',
-                        }}>
-                          <div style={{ position: 'absolute', top: 10, left: 0, right: 0, height: 8, background: '#6B7280', opacity: 0.3 }} />
-                          <div style={{ width: 38, height: 18, background: '#fff', border: '1px solid #E5E7EB', borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, color: '#EB001B', fontFamily: 'monospace' }}>
-                            {cardCvv ? cardCvv.replace(/./g, '•') : '123'}
-                          </div>
-                        </div>
+
+                      <div className="pp-field">
+                        <label>Customer ID / User ID</label>
+                        <input
+                          type="text"
+                          value={customerId}
+                          onChange={e => setCustomerId(e.target.value)}
+                          placeholder="Enter your customer ID"
+                          className="pp-input"
+                        />
                       </div>
-                    </div>
 
-                    <div style={{ marginTop: 14 }}>
-                      <label className="pp-save-card">
-                        <input type="checkbox" checked={saveCard} onChange={e => setSaveCard(e.target.checked)} />
-                        <span>Save this card for future payments</span>
-                      </label>
-                    </div>
-                  </motion.div>
-                )}
+                      <div className="pp-field">
+                        <label>Password</label>
+                        <input
+                          type="password"
+                          value={netbankingPassword}
+                          onChange={e => setNetbankingPassword(e.target.value)}
+                          placeholder="Enter net banking password"
+                          className="pp-input"
+                        />
+                      </div>
 
-                {/* ── UPI FORM ── */}
-                {activeTab === 'upi' && (
-                  <motion.div
-                    key="upi"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="pp-field">
-                      <label>UPI ID / VPA</label>
-                      <input type="text" value={upiId} onChange={e => setUpiId(e.target.value)} placeholder="yourname@okaxis" className="pp-input" />
-                    </div>
+                      <div className="pp-info-alert">
+                        After clicking Pay, you will be redirected to your bank's secure page to log in and approve.
+                      </div>
+                    </motion.div>
+                  )}
 
-                    <div style={{ marginBottom: 16 }}>
-                      <label className="pp-form-section-label">Or select app</label>
-                      <div className="pp-upi-grid" style={{ marginTop: 8 }}>
-                        {upiApps.map(app => (
+                  {/* WALLETS FORM */}
+                  {activeTab === 'wallet' && (
+                    <motion.div
+                      key="wallet"
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      <div className="pp-form-title">Select Wallet</div>
+
+                      <div className="pp-field">
+                        <label>Mobile Number (for ticket)</label>
+                        <input
+                          type="tel"
+                          value={phone}
+                          onChange={e => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                          placeholder="Enter 10-digit mobile number"
+                          className="pp-input"
+                        />
+                      </div>
+
+                      <div className="pp-wallet-grid">
+                        {wallets.map(w => (
                           <button
-                            key={app.id}
+                            key={w.id}
                             type="button"
-                            className={`pp-upi-app ${selectedUpiApp === app.id ? 'selected' : ''}`}
-                            onClick={() => setSelectedUpiApp(app.id)}
+                            className={`pp-wallet-btn ${selectedWallet === w.id ? 'selected' : ''}`}
+                            onClick={() => setSelectedWallet(w.id)}
                           >
                             <div style={{
-                              width: 32, height: 32, borderRadius: 8,
-                              background: app.color + '22', color: app.color,
+                              width: 28, height: 28, borderRadius: 6,
+                              background: w.color + '15', color: w.color,
                               display: 'flex', alignItems: 'center', justifyContent: 'center',
-                              fontWeight: 900, fontSize: 11,
+                              fontWeight: 800, fontSize: 10, flexShrink: 0,
                             }}>
-                              {app.initials}
+                              {w.name.slice(0, 2).toUpperCase()}
                             </div>
-                            {app.name}
+                            {w.name}
                           </button>
                         ))}
                       </div>
-                    </div>
 
-                    <div className="pp-upi-info">
-                      A payment request will be sent to your UPI app after clicking Pay. Open your app to approve.
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* ── NET BANKING ── */}
-                {activeTab === 'netbanking' && (
-                  <motion.div
-                    key="netbanking"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="pp-field">
-                      <label>Select Bank</label>
-                      <select
-                        className="pp-select"
-                        value={selectedBank}
-                        onChange={e => setSelectedBank(e.target.value)}
-                      >
-                        {banks.map(b => (
-                          <option key={b.id} value={b.id}>{b.name}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="pp-field">
-                      <label>Customer ID / User ID</label>
-                      <input type="text" value={customerId} onChange={e => setCustomerId(e.target.value)} placeholder="Enter customer ID" className="pp-input" />
-                    </div>
-                    <div className="pp-field">
-                      <label>Net Banking Password</label>
-                      <input type="password" value={netbankingPassword} onChange={e => setNetbankingPassword(e.target.value)} placeholder="Enter password" className="pp-input" />
-                    </div>
-                    <div className="pp-upi-info">
-                      You will be redirected to your bank's secure portal to complete the transaction.
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* ── WALLET ── */}
-                {activeTab === 'wallet' && (
-                  <motion.div
-                    key="wallet"
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <div className="pp-form-section-label" style={{ marginBottom: 12 }}>Select Wallet</div>
-                    <div className="pp-wallet-grid">
-                      {wallets.map(w => (
-                        <button
-                          key={w.id}
-                          type="button"
-                          className={`pp-wallet-btn ${selectedWallet === w.id ? 'selected' : ''}`}
-                          onClick={() => setSelectedWallet(w.id)}
-                        >
-                          <div style={{
-                            width: 28, height: 28, borderRadius: 6,
-                            background: w.color + '22', color: w.color,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontWeight: 900, fontSize: 10, flexShrink: 0,
-                          }}>
-                            {w.name.slice(0, 2).toUpperCase()}
-                          </div>
-                          {w.name}
-                        </button>
-                      ))}
-                    </div>
-                    <div className="pp-upi-info" style={{ marginTop: 16 }}>
-                      Your wallet balance will be debited instantly on confirmation.
-                    </div>
-                  </motion.div>
-                )}
-
-              </AnimatePresence>
-
-              {/* PAY BUTTON */}
-              <div style={{ marginTop: 24 }}>
-                <button
-                  className="pp-pay-btn"
-                  onClick={handlePayment}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <div style={{ width: 22, height: 22, border: '3px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
-                  ) : (
-                    <>
-                      <IconLock />
-                      Pay ₹{displayAmount.toLocaleString('en-IN')} Securely
-                    </>
+                      <div className="pp-info-alert" style={{ marginTop: 16 }}>
+                        Ensure you have sufficient balance in your wallet. You will be prompted to log in to verify.
+                      </div>
+                    </motion.div>
                   )}
-                </button>
+
+                </AnimatePresence>
               </div>
 
-              {/* Trust badges row */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 16, flexWrap: 'wrap' }}>
-                {[
-                  { icon: '🔒', text: 'SSL Encrypted' },
-                  { icon: '✅', text: 'RBI Compliant' },
-                  { icon: '🛡️', text: 'PCI DSS Secure' },
-                ].map(t => (
-                  <span key={t.text} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: '#9CA3AF', fontWeight: 600 }}>
-                    <span>{t.icon}</span>{t.text}
-                  </span>
-                ))}
+            </div>
+
+            {/* Pay Button Section (Full-width across left column) */}
+            <div className="pp-pay-section">
+              <button
+                className="pp-pay-btn"
+                onClick={handlePayment}
+                disabled={loading}
+              >
+                {loading ? (
+                  <div style={{ width: 22, height: 22, border: '3px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.7s linear infinite' }} />
+                ) : (
+                  <>
+                    <IconLock />
+                    Pay ₹{displayAmount.toLocaleString('en-IN')}
+                  </>
+                )}
+              </button>
+              
+              <div className="pp-agree-text">
+                <IconShield />
+                <span>By continuing, you agree to our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></span>
               </div>
             </div>
 
           </div>
 
-          {/* ── RIGHT SUMMARY CARD ── */}
-          <div className="pp-summary">
-
-            {/* Dark Header */}
-            <div className="pp-summary-header">
-              {isDemo && (
-                <div style={{ fontSize: 10, fontWeight: 700, color: '#fbbf24', background: 'rgba(251,191,36,0.15)', border: '1px solid rgba(251,191,36,0.3)', borderRadius: 6, padding: '2px 8px', marginBottom: 8, display: 'inline-block', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  Preview Mode
-                </div>
-              )}
-              <div className="pp-summary-turf-name">{turfData?.name || 'EROTURF - Main Ground'}</div>
-              <div className="pp-summary-turf-addr">
-                <IconMapPin />
-                {turfData?.location?.city || 'Chennai'}, {turfData?.location?.state || 'Tamil Nadu'}
+          {/* ── RIGHT COLUMN: ORDER SUMMARY ── */}
+          <div className="pp-summary-card">
+            <div className="pp-summary-title">Order Summary</div>
+            
+            <div className="pp-turf-item">
+              <img
+                src={turfData?.images?.[0] || 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800'}
+                alt={turfData?.name || 'Turf'}
+                className="pp-turf-img"
+              />
+              <div className="pp-turf-info">
+                <span className="pp-turf-name">{turfData?.name || 'EROTURF - Main Ground'}</span>
+                <span className="pp-turf-sub">{bookingDate} • {allSlotTimes.length} slots</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span className="pp-summary-rating">
-                  <IconStar />
-                  {turfData?.rating || '4.8'} Rating
-                </span>
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>•</span>
-                <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600 }}>
-                  {allBookings.length} booking{allBookings.length > 1 ? 's' : ''}
-                </span>
+              <div style={{ marginLeft: 'auto', fontWeight: 700, color: '#0F172A', fontSize: 14 }}>
+                ₹{allBookings.reduce((s, b) => s + (b.pricing?.slotPrice || b.pricing?.total || 0), 0).toLocaleString('en-IN')}
               </div>
             </div>
 
-            {/* Accepted Methods */}
-            <div className="pp-brands">
-              <div style={{ width: '100%', fontSize: 10, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 6, paddingTop: 10 }}>
-                Accepted Payments
-              </div>
-              {['VISA', 'Mastercard', 'RuPay', 'UPI', 'Paytm', 'GPay', 'PhonePe'].map(b => (
-                <span key={b} className="pp-brand-pill">{b}</span>
-              ))}
-            </div>
-
-            {/* Booking Details */}
-            <div className="pp-summary-body">
-              <div style={{ marginBottom: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.07em', color: '#9CA3AF', marginBottom: 10 }}>
-                  Booking Details
-                </div>
-
-                {/* Date */}
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: '#F0FDF4', border: '1px solid #BBF7D0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 14 }}>
-                    📅
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Date</div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: '#111827', marginTop: 1 }}>{bookingDate}</div>
-                  </div>
-                </div>
-
-                {/* Slots */}
-                {allSlotTimes.length > 0 && (
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12 }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#F0FDF4', border: '1px solid #BBF7D0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 14 }}>
-                      🕐
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4 }}>
-                        Time Slots ({allSlotTimes.length})
-                      </div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                        {allSlotTimes.slice(0, 6).map(t => (
-                          <span key={t} className="pp-slot-chip">{t}</span>
-                        ))}
-                        {allSlotTimes.length > 6 && (
-                          <span className="pp-slot-chip">+{allSlotTimes.length - 6} more</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Session */}
-                {allBookings[0]?.session && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div style={{ width: 32, height: 32, borderRadius: 8, background: '#F0FDF4', border: '1px solid #BBF7D0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 14 }}>
-                      🌅
-                    </div>
-                    <div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: '#9CA3AF', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Session</div>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: '#111827', marginTop: 1, textTransform: 'capitalize' }}>{allBookings[0].session}</div>
-                    </div>
-                  </div>
-                )}
+            <div className="pp-price-details">
+              <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748B', marginBottom: 4 }}>Price Details</div>
+              
+              <div className="pp-price-row">
+                <span>Price ({allSlotTimes.length} slots)</span>
+                <span>₹{allBookings.reduce((s, b) => s + (b.pricing?.slotPrice || b.pricing?.total || 0), 0).toLocaleString('en-IN')}</span>
               </div>
 
-              <div className="pp-divider" />
-
-              {/* Price Breakdown */}
-              <div style={{ marginBottom: 4 }}>
-                <div style={{ fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.07em', color: '#9CA3AF', marginBottom: 10 }}>
-                  Price Breakdown
-                </div>
-
-                {allBookings.map((b, idx) => (
-                  <div key={idx} className="pp-price-row">
-                    <span>
-                      {allBookings.length > 1 ? `Booking ${idx + 1} — ` : ''}
-                      {Array.isArray(b.slots) ? b.slots.length : 1} slot{(Array.isArray(b.slots) ? b.slots.length : 1) > 1 ? 's' : ''}
-                    </span>
-                    <span style={{ fontWeight: 700, color: '#111827' }}>₹{(b.pricing?.slotPrice || b.pricing?.total || 0).toLocaleString('en-IN')}</span>
-                  </div>
-                ))}
-
-                {allBookings[0]?.pricing?.gst > 0 && (
-                  <div className="pp-price-row">
-                    <span>GST</span>
-                    <span style={{ fontWeight: 700, color: '#111827' }}>₹{allBookings.reduce((s, b) => s + (b.pricing?.gst || 0), 0).toLocaleString('en-IN')}</span>
-                  </div>
-                )}
+              <div className="pp-price-row discount">
+                <span>Discount</span>
+                <span>- ₹0</span>
               </div>
 
-              {/* Total */}
+              <div className="pp-price-row delivery">
+                <span>Delivery Charges</span>
+                <span>FREE</span>
+              </div>
+
+              <div className="pp-section-divider" />
+
               <div className="pp-price-total-row">
-                <span className="pp-total-label">Total Payable</span>
-                <span className="pp-total-amount">₹{displayAmount.toLocaleString('en-IN')}</span>
+                <span className="pp-total-label">Total Amount</span>
+                <div className="pp-total-wrap">
+                  <div className="pp-total-amount">₹{displayAmount.toLocaleString('en-IN')}</div>
+                  <div className="pp-total-subtext">(Inclusive of all taxes)</div>
+                </div>
               </div>
             </div>
 
-            {/* Trust footer */}
-            <div className="pp-trust-row">
-              <IconShield />
-              <span>Powered by Razorpay — 256-bit SSL</span>
+            <div className="pp-section-divider" />
+
+            {/* Horizontal Trust badges under order summary card */}
+            <div className="pp-trust-badges">
+              <div className="pp-trust-badge">
+                <div className="pp-trust-badge-icon"><IconShield /></div>
+                <span className="pp-trust-badge-text">Secure<br />Payment</span>
+              </div>
+              <div className="pp-trust-badge">
+                <div className="pp-trust-badge-icon"><IconClock /></div>
+                <span className="pp-trust-badge-text">Easy<br />Cancellation</span>
+              </div>
+              <div className="pp-trust-badge">
+                <div className="pp-trust-badge-icon"><IconStar /></div>
+                <span className="pp-trust-badge-text">100%<br />Verified Turf</span>
+              </div>
             </div>
+
           </div>
 
         </main>
+
+        {/* ── FOOTER: ACCEPTED BRANDS STRIP ── */}
+        <footer className="pp-footer">
+          <span className="pp-footer-title">We Accept</span>
+          <div className="pp-brand-list">
+            <span className="pp-brand-logo visa">VISA</span>
+            <span className="pp-brand-logo mastercard">mastercard</span>
+            <span className="pp-brand-logo rupay">RuPay</span>
+            <span className="pp-brand-logo upi">UPI</span>
+            <span className="pp-brand-logo paytm">paytm</span>
+            <span className="pp-brand-logo gpay">G Pay</span>
+            <span className="pp-brand-logo phonepe">PhonePe</span>
+            <span className="pp-brand-logo bhim">BHIM</span>
+            <span className="pp-brand-logo more">& more</span>
+          </div>
+        </footer>
+
       </div>
     </>
   );
