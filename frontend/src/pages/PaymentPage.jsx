@@ -451,8 +451,23 @@ export default function PaymentPage() {
           }
         }
 
+        .pp-card-label {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #64748B;
+        }
+
         /* ── LEFT COLUMN ── */
         .pp-left-col {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        /* ── RIGHT COLUMN ── */
+        .pp-right-col {
           display: flex;
           flex-direction: column;
           gap: 24px;
@@ -1464,8 +1479,9 @@ export default function PaymentPage() {
           </div>
 
           {/* ── RIGHT COLUMN: ORDER SUMMARY ── */}
-          <div className="pp-summary-card">
-            <div className="pp-summary-title">Order Summary</div>
+          <div className="pp-right-col">
+            <div className="pp-card-label">ORDER SUMMARY</div>
+            <div className="pp-summary-card">
             
             <div className="pp-turf-item">
               <img
@@ -1529,6 +1545,7 @@ export default function PaymentPage() {
               </div>
             </div>
 
+          </div>
           </div>
 
         </main>
