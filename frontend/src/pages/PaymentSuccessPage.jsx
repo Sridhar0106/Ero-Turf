@@ -22,24 +22,44 @@ function BarcodeSVG({ value }) {
   }
   bars = [...bars, 1, 1, 1];
 
+  // Calculate total bar width so we can size the SVG and center text precisely
+  const barWidths = bars.map((w, idx) => (idx % 2 === 0 ? w * 1.3 : w * 1.3));
+  const totalBarsWidth = barWidths.reduce((a, b) => a + b, 0);
+  const startX = 8;
+  const svgWidth = totalBarsWidth + startX * 2;
+  const centerX = startX + totalBarsWidth / 2;
+
   return (
-    <svg width="260" height="56" viewBox="0 0 260 56" style={{ display: 'block', margin: '0 auto' }}>
+    <svg
+      width={svgWidth}
+      height="64"
+      viewBox={`0 0 ${svgWidth} 64`}
+      style={{ display: 'block', margin: '0 auto', maxWidth: '100%' }}
+    >
       <g fill="#1a1a1a">
         {(() => {
-          let currentX = 4;
+          let currentX = startX;
           return bars.map((width, idx) => {
             const isBar = idx % 2 === 0;
             const barWidth = width * 1.3;
             const x = currentX;
             currentX += barWidth;
             if (isBar) {
-              return <rect key={idx} x={x} y="0" width={barWidth} height="44" />;
+              return <rect key={idx} x={x} y="0" width={Math.max(barWidth - 0.3, 0.8)} height="46" />;
             }
             return null;
           });
         })()}
       </g>
-      <text x="130" y="54" textAnchor="middle" fontSize="9" fontFamily="monospace" letterSpacing="3" fill="#555">
+      <text
+        x={centerX}
+        y="60"
+        textAnchor="middle"
+        fontSize="9"
+        fontFamily="monospace"
+        letterSpacing="3"
+        fill="#666"
+      >
         {value.toUpperCase()}
       </text>
     </svg>
