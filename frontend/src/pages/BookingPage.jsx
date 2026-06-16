@@ -28,7 +28,7 @@ const turfFeatureIcons = {
 };
 
 const MOCK_TURF = {
-  _id: 'mock_turf_001',
+  _id: '000000000000000000000001',
   name: 'EROTURF - Main Ground',
   description: 'Premium cricket turf with world-class facilities, floodlights, and professional-grade pitch.',
   location: {
